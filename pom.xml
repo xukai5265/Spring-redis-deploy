@@ -12,6 +12,10 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compile.source>1.8</maven.compile.source>
+    <maven.compile.target>1.8</maven.compile.target>
+    <jdk.version>1.8</jdk.version>
+    <JAVA_HOME>C:\Program Files\Java\jdk1.8.0_91</JAVA_HOME>
   </properties>
 
   <dependencies>
@@ -78,4 +82,59 @@
     </dependency>
 
   </dependencies>
+
+
+  <build>
+    <sourceDirectory>src/main/java</sourceDirectory>
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+        <includes>
+          <include>**/*.xml</include>
+          <include>**/*.properties</include>
+        </includes>
+        <filtering>true</filtering>
+      </resource>
+      <resource>
+        <directory>src/main/java</directory>
+        <includes>
+          <include>**/*.xml</include>
+          <include>**/*.properties</include>
+        </includes>
+        <filtering>true</filtering>
+      </resource>
+    </resources>
+
+    <plugins>
+      <!-- Set JDK Compiler Level -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>${jdk.version}</source>
+          <target>${jdk.version}</target>
+          <encoding>UTF-8</encoding>
+          <compilerArguments>
+            <bootclasspath>${JAVA_HOME}/jre/lib/rt.jar</bootclasspath>
+          </compilerArguments>
+        </configuration>
+      </plugin>
+
+      <!--   要将源码放上去，需要加入这个插件    -->
+      <plugin>
+        <artifactId>maven-source-plugin</artifactId>
+        <version>2.1.2</version>
+        <configuration>
+          <attach>true</attach>
+        </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
 </project>
