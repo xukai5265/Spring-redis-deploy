@@ -13,8 +13,8 @@ public class RedisTemplateDao {
     @Autowired
     private RedisTemplate redisTemplate;
 
-    public void save2Redis (){
-        redisTemplate.boundHashOps("xukai").put("x","k");
+    public void save2Redis (String key,String k_1,String v_1){
+        redisTemplate.boundHashOps(key).put(k_1,v_1);
     }
 
 

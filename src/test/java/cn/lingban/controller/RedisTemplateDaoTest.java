@@ -18,7 +18,7 @@ public class RedisTemplateDaoTest {
 
     @Test
     public void save2redis(){
-        redisTemplateDao.save2Redis();
+        redisTemplateDao.save2Redis("cd","j","j");
     }
 
     @Test
